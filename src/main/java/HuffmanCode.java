@@ -1,14 +1,12 @@
-import java.io.*;
-import java.util.HashMap;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+
+import java.io.IOException;
+
 
 /**
  * Created by Kuba on 2017-01-12.
  */
 public class HuffmanCode {
 
-    private PriorityQueue<HuffmanTree> huffmanTreePriorityQueue = new PriorityQueue<HuffmanTree>();
     public HuffmanCode(){}
 
     public String[] getCodes(HuffmanNode node) {
@@ -36,16 +34,17 @@ public class HuffmanCode {
     }
 
     public HuffmanTree getHuffmanTree(int[] counts) {
+        Queue<HuffmanTree> huffmanTreeQueue = new Queue<HuffmanTree>();
         for (int i=0; i<counts.length; i++){
             if (counts[i]>0)
-                huffmanTreePriorityQueue.add(new HuffmanTree((char)i,counts[i]));
+                huffmanTreeQueue.addItem(new HuffmanTree((char)i,counts[i]));
         }
-        while (huffmanTreePriorityQueue.size()>1){
-            HuffmanTree left = huffmanTreePriorityQueue.remove();
-            HuffmanTree right = huffmanTreePriorityQueue.remove();
-            huffmanTreePriorityQueue.add(new HuffmanTree(left,right));
+        while (huffmanTreeQueue.getSize()>1){
+            HuffmanTree left = huffmanTreeQueue.removeItem();
+            HuffmanTree right = huffmanTreeQueue.removeItem();
+            huffmanTreeQueue.addItem(new HuffmanTree(left,right));
         }
-        return huffmanTreePriorityQueue.remove();
+        return huffmanTreeQueue.removeItem();
     }
 
 
