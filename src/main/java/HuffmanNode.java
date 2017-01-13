@@ -5,7 +5,8 @@ public class HuffmanNode {
 
     private char Char;
     private int freq;
-    private HuffmanNode left, right;
+    private HuffmanNode left;
+    private HuffmanNode right;
     private String code ="";
 
     public HuffmanNode(){}

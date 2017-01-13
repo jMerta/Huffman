@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws IOException{
         char Char;
-        HuffmanEncoder huffmanEncoder = new HuffmanEncoder();
+        HuffmanCode huffmanEncoder = new HuffmanCode();
         Scanner input = new Scanner(System.in);
         do {
             System.out.println("1. Encode File");
